@@ -1,20 +1,24 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { handleGetUsers } from "../actions/Shared";
+import React, { Component, Fragment } from "react";
+import MainContainer from "./MainContainer";
+import Login from "./Login";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {};
 
-  componentDidMount = () => {
-    this.props.dispatch(handleGetUsers());
-  };
   render() {
     return (
-      <div>
-        <h1>Hello</h1>
-      </div>
+      <BrowserRouter>
+        <Fragment>
+          <MainContainer>
+            <Switch>
+              <Route exact path="/" render={(props) => <Login {...props} />} />
+            </Switch>
+          </MainContainer>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }
 
-export default connect()(App);
+export default App;

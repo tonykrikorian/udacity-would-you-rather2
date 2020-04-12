@@ -1,11 +1,20 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { handleGetUsers } from "../actions/Shared";
 
-function App() {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
+class App extends Component {
+  state = {};
+
+  componentDidMount = () => {
+    this.props.dispatch(handleGetUsers());
+  };
+  render() {
+    return (
+      <div>
+        <h1>Hello</h1>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect()(App);

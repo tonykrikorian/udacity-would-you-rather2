@@ -1,12 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { Redirect } from "react-router-dom";
+import NavBarF from "./NavBarF";
 
 class Home extends Component {
   state = {};
   render() {
+    if (this.props.AuthedUser === null) return <Redirect to="/" />;
     return (
-      <div>
-        <h1>Home</h1>
-      </div>
+      <Fragment>
+        <NavBarF />
+      </Fragment>
     );
   }
 }

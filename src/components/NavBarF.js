@@ -10,7 +10,7 @@ class NavBarF extends Component {
       <Fragment>
         <div className="row justify-content-center">
           <NavBar />
-          <AuthedUser AuthedUser={this.props.AuthedUser} />
+          <AuthedUser />
         </div>
         <div className="row">
           <div className="col">
@@ -21,7 +21,5 @@ class NavBarF extends Component {
     );
   }
 }
-function mapStateToProps({ AuthedUser }) {
-  return { AuthedUser };
-}
-export default connect(mapStateToProps)(NavBarF);
+
+export default NavBarF;

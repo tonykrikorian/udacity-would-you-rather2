@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleGetUsers } from "../actions/Shared";
+import MainContainer from "./MainContainer";
 
 class App extends Component {
   state = {};
@@ -10,9 +11,9 @@ class App extends Component {
   };
   render() {
     return (
-      <div>
-        <h1>Hello</h1>
-      </div>
+      <Fragment>
+        <MainContainer />
+      </Fragment>
     );
   }
 }

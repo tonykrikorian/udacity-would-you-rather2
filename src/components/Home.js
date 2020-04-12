@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+import NavBar from "./NavBar";
 
 class Home extends Component {
   state = {};
@@ -8,7 +9,7 @@ class Home extends Component {
     if (this.props.AuthedUser === null) return <Redirect to="/" />;
     return (
       <div>
-        <h1>Home</h1>
+        <NavBar />
       </div>
     );
   }

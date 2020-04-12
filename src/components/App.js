@@ -2,6 +2,8 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { handleGetUsers } from "../actions/Shared";
 import MainContainer from "./MainContainer";
+import Login from "./Login";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 class App extends Component {
   state = {};
@@ -11,9 +13,15 @@ class App extends Component {
   };
   render() {
     return (
-      <Fragment>
-        <MainContainer />
-      </Fragment>
+      <BrowserRouter>
+        <Fragment>
+          <MainContainer>
+            <Switch>
+              <Route exact path="/" render={(props) => <Login {...props} />} />
+            </Switch>
+          </MainContainer>
+        </Fragment>
+      </BrowserRouter>
     );
   }
 }

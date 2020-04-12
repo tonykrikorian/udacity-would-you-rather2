@@ -23,7 +23,6 @@ class NavBar extends Component {
             </Link>
           </li>
         </ul>
-        <hr className="bg-success" />
       </Fragment>
     );
   }

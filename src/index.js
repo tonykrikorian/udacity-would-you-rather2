@@ -1,15 +1,23 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
+import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.css";
 import "bootstrap/dist/css/bootstrap.css";
+import middleware from "./middleware";
+import reducer from "./reducers";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+
+const store = createStore(reducer, middleware);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

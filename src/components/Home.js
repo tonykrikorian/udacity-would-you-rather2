@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import NavBarF from "./NavBarF";
+import Polls from "./Polls";
 
 class Home extends Component {
   state = {};
@@ -9,6 +10,7 @@ class Home extends Component {
     return (
       <Fragment>
         <NavBarF />
+        <Polls />
       </Fragment>
     );
   }

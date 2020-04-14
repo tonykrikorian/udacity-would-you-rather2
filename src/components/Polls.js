@@ -3,9 +3,14 @@ import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
+import { connect } from "react-redux";
+import { handleQuestions } from "../actions/Questions";
 class Polls extends Component {
   state = {};
+
+  componentDidMount = () => {
+    this.props.dispatch(handleQuestions());
+  };
   render() {
     return (
       <Fragment>
@@ -13,7 +18,7 @@ class Polls extends Component {
           <Tab eventKey="Answered" title="Answered">
             <p>Hello</p>
           </Tab>
-          <Tab eventKey="No Answered" title="No Answered">
+          <Tab eventKey="Unanswered " title="Unanswered ">
             <p>Login</p>
           </Tab>
         </Tabs>
@@ -21,5 +26,9 @@ class Polls extends Component {
     );
   }
 }
-
-export default Polls;
+function mapStateToProps({ Questions }) {
+  return {
+    Questions,
+  };
+}
+export default connect(mapStateToProps)(Polls);

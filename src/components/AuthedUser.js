@@ -13,7 +13,7 @@ class AuthedUser extends Component {
           <p>{`Hello,${this.props.AuthedUser}`} </p>
         </div>
         <div className="col-md-2 text-left">
-          <img className="rounded-circle" src={user.avatarURL} />
+          <img className="rounded-circle" src={user.avatarURL} alt="xxxx" />
           <Button
             className="ml-4"
             type="normal"

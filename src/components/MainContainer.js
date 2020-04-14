@@ -4,9 +4,7 @@ class MainContainer extends Component {
   state = {};
   render() {
     return (
-      <Container className="p-3 my-3 border">
-        {/* <div className="container p-3 my-3 border">{this.props.children}</div> */}
-      </Container>
+      <Container className="p-3 my-3 border">{this.props.children}</Container>
     );
   }
 }

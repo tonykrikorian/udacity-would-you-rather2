@@ -5,7 +5,7 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import "devextreme/dist/css/dx.common.css";
 import "devextreme/dist/css/dx.light.css";
-import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import middleware from "./middleware";
 import reducer from "./reducers";
 import { createStore } from "redux";

@@ -4,6 +4,7 @@ import Login from "./Login";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import { connect } from "react-redux";
+import LeaderBoard from "./LeaderBoard";
 class App extends Component {
   state = {};
   render() {
@@ -19,7 +20,17 @@ class App extends Component {
                   render={(props) => <Login {...props} />}
                 />
               ) : (
-                <Route exact path="/" render={(props) => <Home {...props} />} />
+                <Fragment>
+                  <Route
+                    path="/leaderboard"
+                    render={(props) => <LeaderBoard {...props} />}
+                  />
+                  <Route
+                    exact
+                    path="/"
+                    render={(props) => <Home {...props} />}
+                  />
+                </Fragment>
               )}
             </Switch>
           </MainContainer>

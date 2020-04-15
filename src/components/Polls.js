@@ -31,7 +31,6 @@ class Polls extends Component {
 function mapStateToProps({ Questions, Users, AuthedUser }) {
   return {
     Questions,
-    authedUserAnswerQuestionsIds: Object.keys(Users[AuthedUser].answers),
   };
 }
 export default connect(mapStateToProps)(Polls);

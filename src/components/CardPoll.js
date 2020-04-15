@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Form, Button } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 
 class CardPoll extends Component {
   state = {};
@@ -33,7 +33,7 @@ class CardPoll extends Component {
                 <Col>
                   <button
                     type="button"
-                    class="btn btn-outline-success col btn-sm mt-2"
+                    className="btn btn-outline-success col btn-sm mt-2"
                   >
                     View Poll
                   </button>

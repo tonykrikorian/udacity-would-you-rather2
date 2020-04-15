@@ -13,7 +13,6 @@ class Polls extends Component {
     this.props.dispatch(handleQuestions());
   };
   render() {
-    const { authedUserAnswerQuestionsIds, Questions } = this.props;
     return (
       <Fragment>
         <Tabs className="w-50">

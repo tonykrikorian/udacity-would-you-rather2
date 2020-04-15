@@ -6,14 +6,14 @@ import Col from "react-bootstrap/Col";
 class LeaderBoardCard extends Component {
   state = {};
   render() {
-    const { avatarURL, id, name, answers, questions, score } = this.props.user;
+    const { avatarURL, name, answers, questions, score } = this.props.user;
     return (
       <Fragment>
         <Card md={4}>
           <Card.Body>
             <Row>
               <Col md={1}>
-                <img src={avatarURL} />
+                <img src={avatarURL} alt="user_img" />
               </Col>
               <Col md={3}>
                 <Row>

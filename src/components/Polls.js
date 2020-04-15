@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import { handleQuestions } from "../actions/Questions";
+import CardPoll from "./CardPoll";
 class Polls extends Component {
   state = {};
 
@@ -12,11 +13,12 @@ class Polls extends Component {
     this.props.dispatch(handleQuestions());
   };
   render() {
+    const { authedUserAnswerQuestionsIds, Questions } = this.props;
     return (
       <Fragment>
         <Tabs className="w-50">
           <Tab eventKey="Answered" title="Answered">
-            <p>Hello</p>
+            <CardPoll />
           </Tab>
           <Tab eventKey="Unanswered " title="Unanswered ">
             <p>Login</p>
@@ -26,9 +28,10 @@ class Polls extends Component {
     );
   }
 }
-function mapStateToProps({ Questions }) {
+function mapStateToProps({ Questions, Users, AuthedUser }) {
   return {
     Questions,
+    authedUserAnswerQuestionsIds: Object.keys(Users[AuthedUser].answers),
   };
 }
 export default connect(mapStateToProps)(Polls);

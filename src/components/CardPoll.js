@@ -25,27 +25,18 @@ class CardPoll extends Component {
               </Row>
               <Row>
                 <Col>
-                  <Form.Check
-                    custom
-                    type={"radio"}
-                    label={`be a front developer`}
-                  />
+                  <span>... be a front dev...</span>
                 </Col>
               </Row>
+
               <Row>
                 <Col>
-                  <Form.Check
-                    custom
-                    type={"radio"}
-                    label={`be a backend developer`}
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Button className="btn btn-success col btn-sm mt-2">
-                    Submit
-                  </Button>
+                  <button
+                    type="button"
+                    class="btn btn-outline-success col btn-sm mt-2"
+                  >
+                    View Poll
+                  </button>
                 </Col>
               </Row>
             </Col>

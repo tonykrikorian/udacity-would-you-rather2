@@ -8,7 +8,7 @@ class CardPoll extends Component {
     return (
       <Card className="col-md-4">
         <Card.Header>
-          <h6>{question.author} asks:</h6>
+          <h6>{question.author} asks would you rather...</h6>
         </Card.Header>
         <Card.Body>
           <Row>

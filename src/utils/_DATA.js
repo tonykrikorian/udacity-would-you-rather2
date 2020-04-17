@@ -33,7 +33,6 @@ let users = {
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
 };
-
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
@@ -58,7 +57,7 @@ let questions = {
     },
     optionTwo: {
       votes: ["johndoe", "sarahedo"],
-      text: "become a supervillain",
+      text: "become a supervillian",
     },
   },
   am8ehyc8byjqgar0jgpub9: {
@@ -120,6 +119,12 @@ function generateUID() {
     Math.random().toString(36).substring(2, 15) +
     Math.random().toString(36).substring(2, 15)
   );
+}
+
+export function _getUser(id) {
+  return new Promise((res, rej) => {
+    setTimeout(() => res(users[id]), 1000);
+  });
 }
 
 export function _getUsers() {

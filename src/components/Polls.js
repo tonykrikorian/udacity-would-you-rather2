@@ -4,15 +4,13 @@ import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
-import { handleQuestions } from "../actions/Questions";
 import CardPoll from "./CardPoll";
 class Polls extends Component {
   state = {};
 
-  componentDidMount = () => {
-    this.props.dispatch(handleQuestions());
-  };
   render() {
+    const xx = this.props.Questions["8xf0y6ziyjabvozdd253nd"];
+    console.log(xx.id);
     return (
       <Fragment>
         <Tabs className="w-50">

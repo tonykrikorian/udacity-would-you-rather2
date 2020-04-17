@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import logo from "../logo.svg";
 import { connect } from "react-redux";
-import { handleGetUsers } from "../actions/Shared";
+import { handleInitialData } from "../actions/Shared";
 import { setAuthedUser } from "../actions/AuthedUser";
 import { SelectBox, Button } from "devextreme-react";
 import LoadingBar, { showLoading, hideLoading } from "react-redux-loading-bar";
@@ -12,7 +12,7 @@ class Login extends Component {
   };
 
   componentDidMount = () => {
-    this.props.dispatch(handleGetUsers());
+    this.props.dispatch(handleInitialData());
   };
 
   handleOnChange = (e) => {

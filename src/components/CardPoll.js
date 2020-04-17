@@ -4,10 +4,11 @@ import { Card, Col, Row } from "react-bootstrap";
 class CardPoll extends Component {
   state = {};
   render() {
+    const { question } = this.props;
     return (
       <Card className="col-md-4">
         <Card.Header>
-          <h6>Sara Edo asks:</h6>
+          <h6>{question.author} asks:</h6>
         </Card.Header>
         <Card.Body>
           <Row>

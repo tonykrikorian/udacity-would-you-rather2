@@ -13,7 +13,7 @@ class NavBar extends Component {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="/">
+            <Link className="nav-link" to="/add-question">
               New Question
             </Link>
           </li>

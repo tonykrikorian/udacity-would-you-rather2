@@ -6,6 +6,7 @@ import Home from "./Home";
 import { connect } from "react-redux";
 import LeaderBoard from "./LeaderBoard";
 import LoginContainer from "./LoginContainer";
+import CardAddNewQuestion from "./CardAddNewQuestion";
 class App extends Component {
   state = {};
   render() {
@@ -29,6 +30,10 @@ class App extends Component {
                   <Route
                     path="/leaderboard"
                     render={(props) => <LeaderBoard {...props} />}
+                  />
+                  <Route
+                    path="/add-question"
+                    render={(props) => <CardAddNewQuestion {...props} />}
                   />
                   <Route
                     exact

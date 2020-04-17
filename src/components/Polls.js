@@ -17,7 +17,7 @@ class Polls extends Component {
     } = this.props;
     return (
       <Fragment>
-        <Tabs className="w-50">
+        <Tabs className="w-50 mx-auto ">
           <Tab eventKey="Answered" title="Answered">
             {userQuestionsIds.map((id) => (
               <CardPoll

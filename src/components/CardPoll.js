@@ -6,7 +6,7 @@ class CardPoll extends Component {
   render() {
     const { question } = this.props;
     return (
-      <Card className="col-md-4">
+      <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>
           <h6>{question.author} asks would you rather...</h6>
         </Card.Header>

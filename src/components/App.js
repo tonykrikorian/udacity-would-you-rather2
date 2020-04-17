@@ -5,22 +5,27 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Home from "./Home";
 import { connect } from "react-redux";
 import LeaderBoard from "./LeaderBoard";
+import LoginContainer from "./LoginContainer";
 class App extends Component {
   state = {};
   render() {
     return (
       <BrowserRouter>
         <Fragment>
-          <MainContainer>
-            <Switch>
-              {this.props.AuthedUser === null ? (
-                <Route
-                  exact
-                  path="/"
-                  render={(props) => <Login {...props} />}
-                />
-              ) : (
-                <Fragment>
+          <BrowserRouter>
+            {this.props.AuthedUser === null ? (
+              <LoginContainer>
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    render={(props) => <Login {...props} />}
+                  />
+                </Switch>
+              </LoginContainer>
+            ) : (
+              <MainContainer>
+                <Switch>
                   <Route
                     path="/leaderboard"
                     render={(props) => <LeaderBoard {...props} />}
@@ -30,10 +35,10 @@ class App extends Component {
                     path="/"
                     render={(props) => <Home {...props} />}
                   />
-                </Fragment>
-              )}
-            </Switch>
-          </MainContainer>
+                </Switch>
+              </MainContainer>
+            )}
+          </BrowserRouter>
         </Fragment>
       </BrowserRouter>
     );

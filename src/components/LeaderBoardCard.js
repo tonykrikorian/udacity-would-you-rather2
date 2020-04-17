@@ -9,13 +9,16 @@ class LeaderBoardCard extends Component {
     const { avatarURL, name, answers, questions, score } = this.props.user;
     return (
       <Fragment>
-        <Card md={4}>
+        <Card className="col-md-6 mx-auto">
+          <Card.Header>
+            <h5>{name}</h5>
+          </Card.Header>
           <Card.Body>
             <Row>
-              <Col md={1}>
+              <Col md={2}>
                 <img src={avatarURL} alt="user_img" />
               </Col>
-              <Col md={3}>
+              <Col>
                 <Row>
                   <Col>
                     <h5>{name}</h5>
@@ -32,7 +35,7 @@ class LeaderBoardCard extends Component {
                   </Col>
                 </Row>
               </Col>
-              <Col md={2}>
+              <Col>
                 <Card>
                   <Card.Header>
                     <h4>Score</h4>

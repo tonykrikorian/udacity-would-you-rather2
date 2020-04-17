@@ -9,13 +9,14 @@ class Polls extends Component {
   state = {};
 
   render() {
-    const xx = this.props.Questions["8xf0y6ziyjabvozdd253nd"];
-    console.log(xx.id);
+    const { Questions, userQuestionsIds } = this.props;
     return (
       <Fragment>
         <Tabs className="w-50">
           <Tab eventKey="Answered" title="Answered">
-            <CardPoll />
+            {userQuestionsIds.map((id) => (
+              <CardPoll key={id} question={Questions[id]} />
+            ))}
           </Tab>
           <Tab eventKey="Unanswered " title="Unanswered ">
             <p>Login</p>
@@ -26,8 +27,13 @@ class Polls extends Component {
   }
 }
 function mapStateToProps({ Questions, Users, AuthedUser }) {
+  const userQuestionsIds = Object.keys(Users[AuthedUser].answers).sort(
+    (a, b) => Questions[b].timestamp - Questions[a].timestamp
+  );
+
   return {
     Questions,
+    userQuestionsIds,
   };
 }
 export default connect(mapStateToProps)(Polls);

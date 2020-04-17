@@ -4,23 +4,37 @@ import Tab from "react-bootstrap/Tab";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
-import { handleQuestions } from "../actions/Questions";
 import CardPoll from "./CardPoll";
 class Polls extends Component {
   state = {};
 
-  componentDidMount = () => {
-    this.props.dispatch(handleQuestions());
-  };
   render() {
+    const {
+      Questions,
+      userQuestionsIds,
+      authedUser,
+      userUnAnswaredQuestionsIds,
+    } = this.props;
     return (
       <Fragment>
         <Tabs className="w-50">
           <Tab eventKey="Answered" title="Answered">
-            <CardPoll />
+            {userQuestionsIds.map((id) => (
+              <CardPoll
+                key={id}
+                question={Questions[id]}
+                authedUser={authedUser}
+              />
+            ))}
           </Tab>
           <Tab eventKey="Unanswered " title="Unanswered ">
-            <p>Login</p>
+            {userUnAnswaredQuestionsIds.map((id) => (
+              <CardPoll
+                key={id}
+                question={Questions[id]}
+                authedUser={authedUser}
+              />
+            ))}
           </Tab>
         </Tabs>
       </Fragment>
@@ -28,8 +42,21 @@ class Polls extends Component {
   }
 }
 function mapStateToProps({ Questions, Users, AuthedUser }) {
+  const userQuestionsIds = Object.keys(Users[AuthedUser].answers).sort(
+    (a, b) => Questions[b].timestamp - Questions[a].timestamp
+  );
+
+  const userUnAnswaredQuestionsIds = Object.keys(Questions)
+    .filter((id) => {
+      return userQuestionsIds.indexOf(id) === -1;
+    })
+    .sort((a, b) => Questions[b].timestamp - Questions[a].timestamp);
+
   return {
     Questions,
+    userQuestionsIds,
+    authedUser: Users[AuthedUser],
+    userUnAnswaredQuestionsIds,
   };
 }
 export default connect(mapStateToProps)(Polls);

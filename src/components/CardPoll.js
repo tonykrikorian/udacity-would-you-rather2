@@ -18,15 +18,20 @@ class CardPoll extends Component {
                 alt="xx"
               />
             </Col>
-            <Col className="ml-2">
+            <Col className="ml-2 text-center">
               <Row>
                 <Col>
-                  <h6>Would You Rather...</h6>
+                  <span>{question.optionOne.text}</span>
+                </Col>
+              </Row>
+              <Row>
+                <Col className="text-center">
+                  <span className="font-weight-bold">OR</span>
                 </Col>
               </Row>
               <Row>
                 <Col>
-                  <span>... be a front dev...</span>
+                  <span>{question.optionTwo.text}</span>
                 </Col>
               </Row>
 

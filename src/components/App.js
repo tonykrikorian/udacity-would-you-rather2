@@ -7,9 +7,12 @@ import { connect } from "react-redux";
 import LeaderBoard from "./LeaderBoard";
 import LoginContainer from "./LoginContainer";
 import CardAddNewQuestion from "./CardAddNewQuestion";
+import AnswerQuestion from "./AnswerQuestion";
+
 class App extends Component {
   state = {};
   render() {
+    const { Questions, User } = this.props;
     return (
       <BrowserRouter>
         <Fragment>
@@ -27,6 +30,16 @@ class App extends Component {
             ) : (
               <MainContainer>
                 <Switch>
+                  <Route
+                    path="/question/:id"
+                    render={(props) => (
+                      <AnswerQuestion
+                        {...props}
+                        questions={Questions}
+                        user={User}
+                      />
+                    )}
+                  />
                   <Route
                     path="/leaderboard"
                     render={(props) => <LeaderBoard {...props} />}
@@ -49,7 +62,7 @@ class App extends Component {
     );
   }
 }
-function mapStateToProps({ AuthedUser }) {
-  return { AuthedUser };
+function mapStateToProps({ AuthedUser, Questions, Users }) {
+  return { AuthedUser, Questions, User: Users[AuthedUser] };
 }
 export default connect(mapStateToProps)(App);

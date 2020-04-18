@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { Card, Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 class CardPoll extends Component {
   state = {};
   render() {
-    const { question } = this.props;
+    const { question, answered } = this.props;
     return (
       <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>
@@ -37,12 +38,12 @@ class CardPoll extends Component {
 
               <Row>
                 <Col>
-                  <button
-                    type="button"
+                  <Link
                     className="btn btn-outline-success col btn-sm mt-2"
+                    to={`/question/${question.id}`}
                   >
                     View Poll
-                  </button>
+                  </Link>
                 </Col>
               </Row>
             </Col>

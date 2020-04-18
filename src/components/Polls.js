@@ -24,6 +24,7 @@ class Polls extends Component {
                 key={id}
                 question={Questions[id]}
                 authedUser={authedUser}
+                answered={true}
               />
             ))}
           </Tab>
@@ -33,6 +34,7 @@ class Polls extends Component {
                 key={id}
                 question={Questions[id]}
                 authedUser={authedUser}
+                answered={false}
               />
             ))}
           </Tab>

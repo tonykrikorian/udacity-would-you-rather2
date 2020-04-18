@@ -5,6 +5,7 @@ import { Button, RadioGroup, Validator } from "devextreme-react";
 import { RequiredRule } from "devextreme-react/data-grid";
 import { connect } from "react-redux";
 import { handleAddQuestionAnswer } from "../actions/Shared";
+import notify from "devextreme/ui/notify";
 
 class AnswerQuestionCard extends Component {
   state = {
@@ -19,6 +20,8 @@ class AnswerQuestionCard extends Component {
     this.props.dispatch(
       handleAddQuestionAnswer(AuthedUser, question.id, response)
     );
+    notify("Question respond", "success", 2000);
+    this.props.history.push("/");
   };
   render() {
     const { question, answered } = this.props;

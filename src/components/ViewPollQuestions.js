@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-class CardPoll extends Component {
+class ViewPollQuestions extends Component {
   state = {};
   render() {
-    const { question, answered } = this.props;
+    const { questions, answered } = this.props;
+    const { id } = this.props.match.params;
+    const question = questions[id];
     return (
       <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>
@@ -20,34 +22,21 @@ class CardPoll extends Component {
               />
             </Col>
             <Col className="ml-2 text-center">
+              <h6>Results</h6>
               <Row>
                 <Col>
-                  <span>{question.optionOne.text}</span>
+                  <span>
+                    {question.optionOne.text}: {question.optionOne.votes.length}{" "}
+                    votes
+                  </span>
                 </Col>
               </Row>
               <Row>
-                <Col className="text-center">
-                  <span className="font-weight-bold">OR</span>
-                </Col>
-              </Row>
-              <Row>
                 <Col>
-                  <span>{question.optionTwo.text}</span>
-                </Col>
-              </Row>
-
-              <Row>
-                <Col>
-                  <Link
-                    className="btn btn-outline-success col btn-sm mt-2"
-                    to={
-                      !answered
-                        ? `/question/${question.id}`
-                        : `/question/resume/${question.id}`
-                    }
-                  >
-                    View Poll
-                  </Link>
+                  <span>
+                    {question.optionTwo.text}: {question.optionTwo.votes.length}{" "}
+                    votes
+                  </span>
                 </Col>
               </Row>
             </Col>
@@ -58,4 +47,4 @@ class CardPoll extends Component {
   }
 }
 
-export default CardPoll;
+export default ViewPollQuestions;

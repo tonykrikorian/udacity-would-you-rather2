@@ -8,6 +8,7 @@ import LeaderBoard from "./LeaderBoard";
 import LoginContainer from "./LoginContainer";
 import CardAddNewQuestion from "./CardAddNewQuestion";
 import AnswerQuestion from "./AnswerQuestion";
+import ViewPollQuestions from "./ViewPollQuestions";
 
 class App extends Component {
   state = {};
@@ -30,6 +31,16 @@ class App extends Component {
             ) : (
               <MainContainer>
                 <Switch>
+                  <Route
+                    path="/question/resume/:id"
+                    render={(props) => (
+                      <ViewPollQuestions
+                        {...props}
+                        questions={Questions}
+                        user={User}
+                      />
+                    )}
+                  />
                   <Route
                     path="/question/:id"
                     render={(props) => (

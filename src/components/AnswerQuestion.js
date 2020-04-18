@@ -11,7 +11,7 @@ class AnswerQuestion extends Component {
     const question = Questions[id];
     return (
       <div>
-        <AnswerQuestionCard question={question} />
+        <AnswerQuestionCard question={question} {...this.props} />
       </div>
     );
   }

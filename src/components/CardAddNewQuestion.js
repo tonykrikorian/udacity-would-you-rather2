@@ -22,6 +22,7 @@ class CardAddNewQuestion extends Component {
       handleAddQuestion(firstOption, secondOption, AuthedUser)
     );
     notify("Question added correctly", "success", 3000);
+    this.props.history.push("/");
   };
   render() {
     return (

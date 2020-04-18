@@ -23,14 +23,3 @@ export function handleInitialData() {
     );
   };
 }
-
-// export function handleGetUsers() {
-//   return (dispatch) => {
-//     dispatch(showLoading());
-//     return getUsers().then((users) => {
-//       dispatch(getUsersActionCreator(users));
-//       dispatch()
-//       dispatch(hideLoading());
-//     });
-//   };
-// }

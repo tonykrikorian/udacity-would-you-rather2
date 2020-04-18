@@ -10,7 +10,7 @@ export function getQuestions(questions) {
 }
 
 function addQuestion(question) {
-  const xx = {
+  return {
     type: ADD_QUESTION,
     question,
   };

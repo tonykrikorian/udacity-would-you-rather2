@@ -3,6 +3,8 @@ import { Card, Col, Row } from "react-bootstrap";
 import { TextBox, Button } from "devextreme-react";
 import { handleAddQuestion } from "../actions/Questions";
 import { connect } from "react-redux";
+import notify from "devextreme/ui/notify";
+import { Redirect } from "react-router-dom";
 class CardAddNewQuestion extends Component {
   state = {
     firstOption: "",
@@ -19,6 +21,7 @@ class CardAddNewQuestion extends Component {
     this.props.dispatch(
       handleAddQuestion(firstOption, secondOption, AuthedUser)
     );
+    notify("Question added correctly", "success", 3000);
   };
   render() {
     return (
@@ -28,7 +31,7 @@ class CardAddNewQuestion extends Component {
             <h6>Create new Question</h6>
           </Card.Header>
           <Card.Body>
-            <form>
+            <form onSubmit={this.handleOnSubmit}>
               <div className="form-group">
                 <h6>Would You Rather...?</h6>
               </div>
@@ -52,7 +55,12 @@ class CardAddNewQuestion extends Component {
                   value={this.state.secondOption}
                 />
               </div>
-              <Button type="success" stylingMode="contained" text="submit" />
+              <Button
+                type="success"
+                stylingMode="contained"
+                useSubmitBehavior={true}
+                text="submit"
+              />
             </form>
           </Card.Body>
         </Card>

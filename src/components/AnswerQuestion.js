@@ -1,14 +1,25 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import AnswerQuestionCard from "./AnswerQuestionCard";
 
 class AnswerQuestion extends Component {
   state = {};
   render() {
+    const { AuthedUser, Questions } = this.props;
+    const { id } = this.props.match.params;
+
+    const question = Questions[id];
     return (
       <div>
-        <h4>Answered Question</h4>
+        <AnswerQuestionCard question={question} />
       </div>
     );
   }
 }
-
-export default AnswerQuestion;
+const mapStateToProps = ({ AuthedUser, Questions }) => {
+  return {
+    AuthedUser,
+    Questions,
+  };
+};
+export default connect(mapStateToProps)(AnswerQuestion);

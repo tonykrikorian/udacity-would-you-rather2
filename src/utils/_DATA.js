@@ -1,4 +1,4 @@
-let users = {
+var users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
@@ -33,7 +33,7 @@ let users = {
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
 };
-let questions = {
+var questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
     author: "sarahedo",
@@ -180,6 +180,8 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
+  const yy = questions[qid][answer];
+  console.log({ yy });
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

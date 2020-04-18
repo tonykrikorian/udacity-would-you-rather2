@@ -20,7 +20,9 @@ class AnswerQuestionCard extends Component {
       handleAddQuestionAnswer(AuthedUser, question.id, response)
     );
     notify("Question respond", "success", 2000);
-    // this.props.history.push("/");
+    setTimeout(() => {
+      this.props.history.push("/");
+    }, 2000);
   };
   render() {
     const { question, answered } = this.props;

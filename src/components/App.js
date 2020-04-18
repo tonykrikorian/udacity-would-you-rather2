@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import MainContainer from "./MainContainer";
 import Login from "./Login";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./Home";
 import { connect } from "react-redux";
 import LeaderBoard from "./LeaderBoard";
@@ -21,11 +21,13 @@ class App extends Component {
             {this.props.AuthedUser === null ? (
               <LoginContainer>
                 <Switch>
+                  <Redirect from="/not-found" to="/" />
                   <Route
                     exact
                     path="/"
                     render={(props) => <Login {...props} />}
                   />
+                  <Redirect to="/not-found" />
                 </Switch>
               </LoginContainer>
             ) : (

@@ -1,16 +1,32 @@
 import React, { Component } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { Button, RadioGroup } from "devextreme-react";
+import { Button, RadioGroup, Validator } from "devextreme-react";
+import { RequiredRule } from "devextreme-react/data-grid";
+import { connect } from "react-redux";
+import { handleAddQuestionAnswer } from "../actions/Shared";
 
 class AnswerQuestionCard extends Component {
-  state = {};
+  state = {
+    response: "",
+  };
+
+  handleOnSubmit = (e) => {
+    e.preventDefault();
+    const { question, AuthedUser } = this.props;
+    const { response } = this.state;
+
+    this.props.dispatch(
+      handleAddQuestionAnswer(AuthedUser, question.id, response)
+    );
+  };
   render() {
     const { question, answered } = this.props;
     const options = [
       { value: "optionOne", text: question.optionOne.text },
       { value: "OptionTwo", text: question.optionTwo.text },
     ];
+
     return (
       <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>
@@ -24,32 +40,44 @@ class AnswerQuestionCard extends Component {
                 alt="xx"
               />
             </Col>
-            <Col className="ml-2 text-center">
-              <Row>
-                <Col>
-                  <RadioGroup
-                    items={options}
-                    displayExpr="text"
-                    valueExpr="value"
-                  />
-                </Col>
-              </Row>
+            <form onSubmit={this.handleOnSubmit}>
+              <Col className="ml-2 text-center">
+                <Row>
+                  <Col>
+                    <RadioGroup
+                      items={options}
+                      displayExpr="text"
+                      valueExpr="value"
+                      onValueChanged={(e) => {
+                        this.setState({ response: e.value });
+                      }}
+                    >
+                      <Validator>
+                        <RequiredRule message="You have to select an option" />
+                      </Validator>
+                    </RadioGroup>
+                  </Col>
+                </Row>
 
-              <Row className="mt-3">
-                <Col>
-                  <Button
-                    text="Respond"
-                    type="success"
-                    stylingMode="contained"
-                  />
-                </Col>
-              </Row>
-            </Col>
+                <Row className="mt-3">
+                  <Col>
+                    <Button
+                      text="Respond"
+                      type="success"
+                      stylingMode="contained"
+                      useSubmitBehavior={true}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+            </form>
           </Row>
         </Card.Body>
       </Card>
     );
   }
 }
-
-export default AnswerQuestionCard;
+function mapStateToProps({ AuthedUser }) {
+  return { AuthedUser };
+}
+export default connect(mapStateToProps)(AnswerQuestionCard);

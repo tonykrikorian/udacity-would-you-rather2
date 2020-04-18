@@ -1,7 +1,9 @@
 import { saveQuestion } from "../utils/api";
-import { addQuestionToUser } from "./Shared";
+import { addQuestionToUser, ADD_QUESTION_TO_USER } from "./Shared";
+
 export const GET_QUESTIONS = "GET_QUESTIONS";
 export const ADD_QUESTION = "ADD_QUESTION";
+export const ADD_QUESTION_ANSWER = "ADD_QUESTION_ANSWER";
 
 export function getQuestions(questions) {
   return {
@@ -14,6 +16,15 @@ function addQuestion(question) {
   return {
     type: ADD_QUESTION,
     question,
+  };
+}
+
+export function addQuestionAnswer(authedUser, questionId, selectedOption) {
+  return {
+    type: ADD_QUESTION_ANSWER,
+    authedUser,
+    questionId,
+    selectedOption,
   };
 }
 

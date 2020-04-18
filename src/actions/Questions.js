@@ -9,17 +9,19 @@ export function getQuestions(questions) {
   };
 }
 
-function addQuestion(optionOneText, optionTwoText, author) {
-  return {
+function addQuestion(question) {
+  const xx = {
     type: ADD_QUESTION,
-    optionOneText,
-    optionTwoText,
-    author,
+    question,
   };
 }
 
 export function handleAddQuestion(optionOneText, optionTwoText, author) {
   return (dispatch) => {
-    return saveQuestion();
+    return saveQuestion({ optionOneText, optionTwoText, author }).then(
+      (question) => {
+        dispatch(addQuestion(question));
+      }
+    );
   };
 }

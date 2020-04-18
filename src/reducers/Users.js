@@ -1,4 +1,8 @@
-import { GET_USERS, ADD_QUESTION_TO_USER } from "../actions/Shared";
+import {
+  GET_USERS,
+  ADD_QUESTION_TO_USER,
+  ADD_USER_QUESTION_ANSWER,
+} from "../actions/Shared";
 
 export default function users(state = {}, action) {
   switch (action.type) {
@@ -13,6 +17,17 @@ export default function users(state = {}, action) {
             ...state[action.question.author].questions,
             action.question.id,
           ],
+        },
+      };
+    case ADD_USER_QUESTION_ANSWER:
+      return {
+        ...state,
+        [action.authedUser]: {
+          ...state[action.authedUser],
+          answers: {
+            ...state[action.authedUser].answers,
+            [action.questionId]: action.selectedOption,
+          },
         },
       };
     default:

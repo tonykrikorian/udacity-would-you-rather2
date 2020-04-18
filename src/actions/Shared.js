@@ -5,6 +5,7 @@ import { addQuestionAnswer } from "../actions/Questions";
 
 export const GET_USERS = "GET_USERS";
 export const ADD_QUESTION_TO_USER = "ADD_QUESTION_TO_USER";
+export const ADD_USER_QUESTION_ANSWER = "ADD_USER_QUESTION_ANSWER";
 function getUsersActionCreator(users) {
   return {
     type: GET_USERS,
@@ -32,6 +33,15 @@ export function addQuestionToUser(question) {
   };
 }
 
+export function addUserQuestionAnswer(authedUser, questionId, selectedOption) {
+  return {
+    type: ADD_USER_QUESTION_ANSWER,
+    authedUser,
+    questionId,
+    selectedOption,
+  };
+}
+
 export function handleAddQuestionAnswer(
   authedUser,
   questionId,
@@ -44,7 +54,7 @@ export function handleAddQuestionAnswer(
       answer: selectedOption,
     }).then(() => {
       dispatch(addQuestionAnswer(authedUser, questionId, selectedOption));
-      // dispatch(addUserQuestionAnswer(authedUser, questionId, selectedOption));
+      dispatch(addUserQuestionAnswer(authedUser, questionId, selectedOption));
     });
   };
 }

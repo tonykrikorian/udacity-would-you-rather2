@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { Button, RadioGroup, Validator } from "devextreme-react";
-import { RequiredRule } from "devextreme-react/data-grid";
 import { connect } from "react-redux";
 import { handleAddQuestionAnswer } from "../actions/Shared";
 import notify from "devextreme/ui/notify";
+import { RequiredRule } from "devextreme-react/validator";
 
 class AnswerQuestionCard extends Component {
   state = {
@@ -21,7 +20,7 @@ class AnswerQuestionCard extends Component {
       handleAddQuestionAnswer(AuthedUser, question.id, response)
     );
     notify("Question respond", "success", 2000);
-    this.props.history.push("/");
+    // this.props.history.push("/");
   };
   render() {
     const { question, answered } = this.props;

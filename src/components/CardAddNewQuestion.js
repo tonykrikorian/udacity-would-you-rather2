@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-import { TextBox, Button } from "devextreme-react";
+import { TextBox, Button, Validator } from "devextreme-react";
 import { handleAddQuestion } from "../actions/Questions";
 import { connect } from "react-redux";
 import notify from "devextreme/ui/notify";
-import { Redirect } from "react-router-dom";
+import { RequiredRule } from "devextreme-react/validator";
+
 class CardAddNewQuestion extends Component {
   state = {
     firstOption: "",
@@ -44,7 +45,11 @@ class CardAddNewQuestion extends Component {
                     this.handleOnChange(e, "firstOption");
                   }}
                   value={this.state.firstOption}
-                />
+                >
+                  <Validator>
+                    <RequiredRule message="You should add a first option for a question" />
+                  </Validator>
+                </TextBox>
               </div>
               <div className="form-group">
                 <TextBox
@@ -54,7 +59,11 @@ class CardAddNewQuestion extends Component {
                     this.handleOnChange(e, "secondOption");
                   }}
                   value={this.state.secondOption}
-                />
+                >
+                  <Validator>
+                    <RequiredRule message="You should add a second option for a question" />
+                  </Validator>
+                </TextBox>
               </div>
               <Button
                 type="success"

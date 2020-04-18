@@ -25,7 +25,6 @@ function mapStateToProps({ AuthedUser, Users }) {
   const usersIds = Object.keys(UsersWithScore).sort(
     (a, b) => UsersWithScore[b].score - UsersWithScore[a].score
   );
-  console.log({ usersIds });
   return {
     AuthedUser,
     users: UsersWithScore,

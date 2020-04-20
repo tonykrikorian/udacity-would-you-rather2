@@ -1,8 +1,6 @@
 import React, { Component, Fragment } from "react";
 import Tabs from "react-bootstrap/Tabs";
 import Tab from "react-bootstrap/Tab";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import { connect } from "react-redux";
 import CardPoll from "./CardPoll";
 class Polls extends Component {
@@ -17,7 +15,7 @@ class Polls extends Component {
     } = this.props;
     return (
       <Fragment>
-        <Tabs className="w-50 mx-auto ">
+        <Tabs className="w-50 mx-auto">
           <Tab eventKey="Answered" title="Answered">
             {userQuestionsIds.map((id) => (
               <CardPoll

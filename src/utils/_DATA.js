@@ -1,4 +1,4 @@
-var users = {
+let users = {
   sarahedo: {
     id: "sarahedo",
     name: "Sarah Edo",
@@ -33,7 +33,8 @@ var users = {
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
 };
-var questions = {
+
+let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: "8xf0y6ziyjabvozdd253nd",
     author: "sarahedo",
@@ -57,7 +58,7 @@ var questions = {
     },
     optionTwo: {
       votes: ["johndoe", "sarahedo"],
-      text: "become a supervillian",
+      text: "become a supervillain",
     },
   },
   am8ehyc8byjqgar0jgpub9: {
@@ -121,12 +122,6 @@ function generateUID() {
   );
 }
 
-export function _getUser(id) {
-  return new Promise((res, rej) => {
-    setTimeout(() => res(users[id]), 1000);
-  });
-}
-
 export function _getUsers() {
   return new Promise((res, rej) => {
     setTimeout(() => res({ ...users }), 1000);
@@ -180,8 +175,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ authedUser, qid, answer }) {
-  const yy = questions[qid][answer];
-  console.log({ yy });
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {
@@ -195,6 +188,7 @@ export function _saveQuestionAnswer({ authedUser, qid, answer }) {
         },
       };
 
+      // console.log(questions[qid][answer].votes.concat([authedUser]));
       questions = {
         ...questions,
         [qid]: {

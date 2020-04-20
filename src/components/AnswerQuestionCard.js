@@ -25,7 +25,7 @@ class AnswerQuestionCard extends Component {
     }, 2000);
   };
   render() {
-    const { question, answered } = this.props;
+    const { question, answered, Users } = this.props;
     const options = [
       { value: "optionOne", text: question.optionOne.text },
       { value: "optionTwo", text: question.optionTwo.text },
@@ -39,10 +39,7 @@ class AnswerQuestionCard extends Component {
         <Card.Body>
           <Row>
             <Col md={2}>
-              <img
-                src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
-                alt="xx"
-              />
+              <img src={Users[question.author].avatarURL} alt="xx" />
             </Col>
             <form onSubmit={this.handleOnSubmit}>
               <Col className="ml-2 text-center">

@@ -16,10 +16,11 @@ class AnswerQuestion extends Component {
     );
   }
 }
-const mapStateToProps = ({ AuthedUser, Questions }) => {
+const mapStateToProps = ({ AuthedUser, Questions, Users }) => {
   return {
     AuthedUser,
     Questions,
+    Users,
   };
 };
 export default connect(mapStateToProps)(AnswerQuestion);

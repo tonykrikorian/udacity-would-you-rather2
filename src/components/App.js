@@ -13,7 +13,7 @@ import ViewPollQuestions from "./ViewPollQuestions";
 class App extends Component {
   state = {};
   render() {
-    const { Questions, User } = this.props;
+    const { Questions, User, Users } = this.props;
     return (
       <BrowserRouter>
         <Fragment>
@@ -40,6 +40,7 @@ class App extends Component {
                         {...props}
                         questions={Questions}
                         user={User}
+                        Users={Users}
                       />
                     )}
                   />
@@ -50,6 +51,7 @@ class App extends Component {
                         {...props}
                         questions={Questions}
                         user={User}
+                        Users={Users}
                       />
                     )}
                   />
@@ -76,6 +78,6 @@ class App extends Component {
   }
 }
 function mapStateToProps({ AuthedUser, Questions, Users }) {
-  return { AuthedUser, Questions, User: Users[AuthedUser] };
+  return { AuthedUser, Questions, User: Users[AuthedUser], Users };
 }
 export default connect(mapStateToProps)(App);

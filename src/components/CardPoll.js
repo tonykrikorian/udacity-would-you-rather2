@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class CardPoll extends Component {
   state = {};
   render() {
-    const { question, answered } = this.props;
+    const { question, answered, authedUser, Users } = this.props;
     return (
       <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>
@@ -14,10 +15,7 @@ class CardPoll extends Component {
         <Card.Body>
           <Row>
             <Col md={2}>
-              <img
-                src="https://react.semantic-ui.com/images/avatar/small/jenny.jpg"
-                alt="xx"
-              />
+              <img src={Users[question.author].avatarURL} alt="xx" />
             </Col>
             <Col className="ml-2 text-center">
               <Row>
@@ -57,5 +55,7 @@ class CardPoll extends Component {
     );
   }
 }
-
-export default CardPoll;
+function mapStateToProps({ Users }) {
+  return { Users };
+}
+export default connect(mapStateToProps)(CardPoll);

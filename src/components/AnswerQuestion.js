@@ -5,7 +5,7 @@ import AnswerQuestionCard from "./AnswerQuestionCard";
 class AnswerQuestion extends Component {
   state = {};
   render() {
-    const { AuthedUser, Questions } = this.props;
+    const { AuthedUser, Questions, Users } = this.props;
     const { id } = this.props.match.params;
 
     const question = Questions[id];

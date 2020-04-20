@@ -28,7 +28,7 @@ class AnswerQuestionCard extends Component {
     const { question, answered } = this.props;
     const options = [
       { value: "optionOne", text: question.optionOne.text },
-      { value: "OptionTwo", text: question.optionTwo.text },
+      { value: "optionTwo", text: question.optionTwo.text },
     ];
 
     return (

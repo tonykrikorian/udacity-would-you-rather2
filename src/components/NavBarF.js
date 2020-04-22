@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import NavBar from "./NavBar";
 import AuthedUser from "./AuthedUser";
-import { connect } from "react-redux";
 
 class NavBarF extends Component {
   state = {};

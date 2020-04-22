@@ -8,6 +8,7 @@ class ViewPollQuestions extends Component {
     const { questions, answered, Users } = this.props;
     const { id } = this.props.match.params;
     const question = questions[id];
+    console.log({ question });
     return (
       <Card className="col-md-4 mx-auto mt-3 mb-3">
         <Card.Header>

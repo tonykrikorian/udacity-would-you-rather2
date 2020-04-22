@@ -10,10 +10,24 @@ class AuthedUser extends Component {
     return (
       <Fragment>
         <div className="col-3 text-right nav-link">
-          <p>{`Hello,${this.props.AuthedUser}`} </p>
+          <p>
+            {`Hello,${
+              this.props.AuthedUser === null ? "" : this.props.AuthedUser
+            }`}{" "}
+          </p>
         </div>
         <div className="col-md-2 text-left">
-          <img className="rounded-circle" src={user.avatarURL} alt="xxxx" />
+          {user !== undefined ? (
+            <img className="rounded-circle" src={user.avatarURL} alt="xxxx" />
+          ) : (
+            <img
+              className="rounded-circle"
+              src={
+                "https://react.semantic-ui.com/images/avatar/small/elliot.jpg"
+              }
+              alt="xxxx"
+            />
+          )}
           <Button
             className="ml-4"
             type="normal"

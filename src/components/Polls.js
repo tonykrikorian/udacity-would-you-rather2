@@ -16,16 +16,6 @@ class Polls extends Component {
     return (
       <Fragment>
         <Tabs className="w-50 mx-auto">
-          <Tab eventKey="Answered" title="Answered">
-            {userQuestionsIds.map((id) => (
-              <CardPoll
-                key={id}
-                question={Questions[id]}
-                authedUser={authedUser}
-                answered={true}
-              />
-            ))}
-          </Tab>
           <Tab eventKey="Unanswered " title="Unanswered ">
             {userUnAnswaredQuestionsIds.map((id) => (
               <CardPoll
@@ -33,6 +23,16 @@ class Polls extends Component {
                 question={Questions[id]}
                 authedUser={authedUser}
                 answered={false}
+              />
+            ))}
+          </Tab>
+          <Tab eventKey="Answered" title="Answered">
+            {userQuestionsIds.map((id) => (
+              <CardPoll
+                key={id}
+                question={Questions[id]}
+                authedUser={authedUser}
+                answered={true}
               />
             ))}
           </Tab>

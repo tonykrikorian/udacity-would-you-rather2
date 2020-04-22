@@ -9,6 +9,7 @@ import LoginContainer from "./LoginContainer";
 import CardAddNewQuestion from "./CardAddNewQuestion";
 import AnswerQuestion from "./AnswerQuestion";
 import ViewPollQuestions from "./ViewPollQuestions";
+import NotFound from "./NotFound";
 
 class App extends Component {
   state = {};
@@ -21,19 +22,33 @@ class App extends Component {
             {this.props.AuthedUser === null ? (
               <LoginContainer>
                 <Switch>
-                  <Redirect from="/not-found" to="/" />
                   <Route
                     exact
                     path="/"
                     render={(props) => <Login {...props} />}
                   />
-                  <Redirect to="/not-found" />
+                  <Route
+                    render={() => {
+                      return (
+                        <MainContainer>
+                          <NotFound />
+                        </MainContainer>
+                      );
+                    }}
+                  />
                 </Switch>
               </LoginContainer>
             ) : (
               <MainContainer>
                 <Switch>
                   <Route
+                    exact
+                    path="/"
+                    render={(props) => <Home {...props} />}
+                  />
+
+                  <Route
+                    exact
                     path="/question/resume/:id"
                     render={(props) => (
                       <ViewPollQuestions
@@ -45,6 +60,7 @@ class App extends Component {
                     )}
                   />
                   <Route
+                    exact
                     path="/question/:id"
                     render={(props) => (
                       <AnswerQuestion
@@ -56,18 +72,16 @@ class App extends Component {
                     )}
                   />
                   <Route
+                    exact
                     path="/leaderboard"
                     render={(props) => <LeaderBoard {...props} />}
                   />
                   <Route
+                    exact
                     path="/add-question"
                     render={(props) => <CardAddNewQuestion {...props} />}
                   />
-                  <Route
-                    exact
-                    path="/"
-                    render={(props) => <Home {...props} />}
-                  />
+                  <Route component={NotFound} />
                 </Switch>
               </MainContainer>
             )}

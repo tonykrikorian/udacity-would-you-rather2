@@ -5,7 +5,7 @@ import Polls from "./Polls";
 class Home extends Component {
   state = {};
   render() {
-    if (this.props.AuthedUser === null) return <Redirect to="/" />;
+    // if (this.props.AuthedUser === null) return <Redirect to="/" />;
     return (
       <Fragment>
         <Polls />

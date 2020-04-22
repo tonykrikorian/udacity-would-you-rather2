@@ -10,7 +10,11 @@ class AuthedUser extends Component {
     return (
       <Fragment>
         <div className="col-3 text-right nav-link">
-          <p>{`Hello,${this.props.AuthedUser}`} </p>
+          <p>
+            {`Hello,${
+              this.props.AuthedUser === null ? "" : this.props.AuthedUser
+            }`}{" "}
+          </p>
         </div>
         <div className="col-md-2 text-left">
           {user !== undefined ? (

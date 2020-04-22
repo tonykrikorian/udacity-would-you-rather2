@@ -4,7 +4,7 @@ const NotFound = () => {
   return (
     <Fragment>
       <div className="row mx-auto">
-        <img src="/404.jpg" />
+        <img src="/404.jpg" alt="cccc" />
       </div>
     </Fragment>
   );
